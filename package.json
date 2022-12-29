@@ -1,0 +1,7 @@
+{
+  "name": "catflt",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.6.3"
+  }
+}
