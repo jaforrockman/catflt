@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :issues
+  resources :mess_types
+  resources :messes
   resources :scales
   root to: 'pages#home'
 

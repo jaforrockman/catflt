@@ -1,0 +1,2 @@
+module MessTypesHelper
+end

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221230044712) do
+ActiveRecord::Schema.define(version: 20221230100654) do
+
+  create_table "issues", force: :cascade do |t|
+    t.integer "item_id"
+    t.decimal "qty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.integer "inum"
@@ -18,15 +25,17 @@ ActiveRecord::Schema.define(version: 20221230044712) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "offr_scale"
+    t.decimal "am_scale"
+    t.decimal "modc_scale"
+    t.decimal "civ1_scale"
+    t.decimal "civ2_scale"
   end
 
-  create_table "scales", force: :cascade do |t|
-    t.string "scale_type"
-    t.decimal "qty"
-    t.integer "item_id"
+  create_table "messes", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_scales_on_item_id"
   end
 
 end
