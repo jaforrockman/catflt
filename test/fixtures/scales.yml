@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scale_type: MyString
+  qty: 9.99
+  item: one
+
+two:
+  scale_type: MyString
+  qty: 9.99
+  item: two

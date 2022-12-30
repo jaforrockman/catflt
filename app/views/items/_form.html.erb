@@ -12,6 +12,7 @@
   <% end %>
 
   <div class="field">
+  <h4>Last Item Number: <%= Item.last.inum%></h4>
     <%= form.label :inum %>
     <%= form.number_field :inum, id: :item_inum %>
   </div>
