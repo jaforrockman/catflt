@@ -13,6 +13,8 @@ class Vouchers::IssuesController < ApplicationController
   def new
     @voucher = Voucher.find(params[:voucher_id])
     @issue = Issue.new
+    
+    
   end
 
   # GET /issues/1/edit

@@ -15,6 +15,10 @@ class VouchersController < ApplicationController
   # GET /vouchers/new
   def new
     @voucher = Voucher.new
+    @items = Item.all
+      
+    @voucher.issues.build
+     
   end
 
   # GET /vouchers/1/edit

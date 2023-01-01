@@ -20,6 +20,24 @@
     <%= form.label :mess_id %>
     <%= form.number_field :mess_id, id: :voucher_mess_id %>
   </div>
+<br/>
+<h2>vouchers issues</h2>
+
+  <%=form.fields_for :issues do |f|%>
+    
+
+
+        <div class="field">
+          <%= f.label :item_id %>
+          <%= f.number_field :item_id, id: :issue_item_id %>
+        </div>
+
+        <div class="field">
+          <%= f.label :qty %>
+          <%= f.text_field :qty, id: :issue_qty %>
+        </div>
+
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
