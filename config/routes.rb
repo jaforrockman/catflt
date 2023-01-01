@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :issues
+  resources :vouchers do
+  	resources :issues, exept: [:index], controller:'vouchers/issues'
+  end
+  
   resources :mess_types
   resources :messes
   resources :scales

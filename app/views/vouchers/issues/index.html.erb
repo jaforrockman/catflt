@@ -7,6 +7,7 @@
     <tr>
       <th>Item</th>
       <th>Qty</th>
+      <th>Voucher</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= issue.item_id %></td>
         <td><%= issue.qty %></td>
+        <td><%= issue.voucher.id %></td>
         <td><%= link_to 'Show', issue %></td>
         <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
         <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>

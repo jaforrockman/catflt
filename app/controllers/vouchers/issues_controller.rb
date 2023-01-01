@@ -1,5 +1,4 @@
-class IssuesController < ApplicationController
-  before_action :set_issue, only: %i[ show edit update destroy ]
+class Vouchers::IssuesController < ApplicationController
 
   # GET /issues or /issues.json
   def index
@@ -12,6 +11,7 @@ class IssuesController < ApplicationController
 
   # GET /issues/new
   def new
+    @voucher = Voucher.find(params[:voucher_id])
     @issue = Issue.new
   end
 
@@ -21,15 +21,17 @@ class IssuesController < ApplicationController
 
   # POST /issues or /issues.json
   def create
+    @voucher = Voucher.find(params[:voucher_id])
     @issue = Issue.new(issue_params)
+    @issue.voucher = @voucher
 
     respond_to do |format|
       if @issue.save
-        format.html { redirect_to issue_url(@issue), notice: "Issue was successfully created." }
-        format.json { render :show, status: :created, location: @issue }
+        format.html { redirect_to (@voucher), notice: "Issue was successfully created." }
+        format.json { render :show, status: :created, location: @voucher }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
+        format.json { render json: @voucher.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,6 +67,6 @@ class IssuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def issue_params
-      params.require(:issue).permit(:item_id, :qty)
+      params.require(:issue).permit(:item_id, :qty, :voucher_id)
     end
 end

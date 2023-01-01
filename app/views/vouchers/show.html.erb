@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @voucher.name %>
+</p>
+
+<p>
+  <strong>Mess:</strong>
+  <%= @voucher.mess_id %>
+</p>
+
+<div>
+	<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Item Name</th>
+			<th>Qty</th>
+			<th>Voucher Id</th>
+			
+		</tr>
+	</thead>
+
+	<tbody>
+	<% @issues.each do |issue| %>
+
+		<tr>
+			<td><%= Item.find(issue.item_id).name%></td>
+			<td><%= issue.qty%></td>
+			<td><%= issue.voucher.id%></td>
+			
+
+		</tr>
+	<% end %>
+		
+	</tbody>
+		
+	</table>
+</div>
+
+
+<%= link_to 'Edit', edit_voucher_path(@voucher) %> |
+<%= link_to 'Back', vouchers_path %>
+<br/>
+
+<%= link_to " Add new Issue", new_voucher_issue_path(@voucher), class: 'pull-right'%>

@@ -1,4 +1,4 @@
-<%= form_with(model: issue, local: true) do |form| %>
+<%= form_for [@voucher, @issue] do |form| %>
   <% if issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
@@ -20,6 +20,8 @@
     <%= form.label :qty %>
     <%= form.text_field :qty, id: :issue_qty %>
   </div>
+
+ 
 
   <div class="actions">
     <%= form.submit %>
