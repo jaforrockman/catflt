@@ -25,21 +25,22 @@
 
   <%=form.fields_for :issues do |f|%>
     
+           <div class="field">
+            <%= f.label :item_id %>
+            <%= f.number_field :item_id, id: :issue_item_id %>
+          </div>
 
-
-        <div class="field">
-          <%= f.label :item_id %>
-          <%= f.number_field :item_id, id: :issue_item_id %>
-        </div>
-
-        <div class="field">
-          <%= f.label :qty %>
-          <%= f.text_field :qty, id: :issue_qty %>
-        </div>
-
+          <div class="field">
+            <%= f.label :qty %>
+            <%= f.text_field :qty, id: :issue_qty %>
+          </div>
+   
   <% end %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+

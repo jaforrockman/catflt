@@ -1,5 +1,5 @@
 class Vouchers::IssuesController < ApplicationController
-
+  
   # GET /issues or /issues.json
   def index
     @issues = Issue.all

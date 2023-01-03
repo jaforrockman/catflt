@@ -10,15 +10,15 @@ class VouchersController < ApplicationController
   def show
     @voucher = Voucher.find(params[:id])
     @issues = @voucher.issues
+
   end
 
   # GET /vouchers/new
   def new
     @voucher = Voucher.new
     @items = Item.all
-      
     @voucher.issues.build
-     
+    
   end
 
   # GET /vouchers/1/edit
