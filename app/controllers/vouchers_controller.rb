@@ -23,6 +23,9 @@ class VouchersController < ApplicationController
 
   # GET /vouchers/1/edit
   def edit
+    @voucher = Voucher.find(params[:id])
+    @issues = @voucher.issues
+    
   end
 
   # POST /vouchers or /vouchers.json

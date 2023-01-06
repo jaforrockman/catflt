@@ -14,9 +14,12 @@
 	<table class="table table-hover">
 	<thead>
 		<tr>
+			<th>issue id</th>
 			<th>Item Name</th>
 			<th>Qty</th>
 			<th>Voucher Id</th>
+			<th>edit</th>
+			<th>delete</th>
 			
 		</tr>
 	</thead>
@@ -25,9 +28,13 @@
 	<% @issues.each do |issue| %>
 
 		<tr>
+			<td><%= issue.id%></td>
 			<td><%= Item.find(issue.item_id).name%></td>
 			<td><%= issue.qty%></td>
 			<td><%= issue.voucher.id%></td>
+			<td><%= link_to "edit", edit_voucher_issue_path(voucher_id: @voucher.id, id:issue.id)%></td>
+			<td><%= link_to "Delete", [@voucher, issue], method: :delete, confirm: "Are you sure! you want to delete the issue" %></td>
+			
 			
 
 		</tr>
