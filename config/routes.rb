@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :ranks
+  resources :users
+  resources :caterings
+  resources :bases
   resources :vouchers do
   	resources :issues, exept: [:index], controller:'vouchers/issues'
   end

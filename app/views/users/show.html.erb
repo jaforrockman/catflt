@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bd:</strong>
+  <%= @user.bd %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Rank:</strong>
+  <%= @user.rank_id %>
+</p>
+
+<p>
+  <strong>Catering:</strong>
+  <%= @user.catering_id %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

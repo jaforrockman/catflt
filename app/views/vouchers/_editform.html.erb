@@ -23,23 +23,45 @@
 <br/>
 <h2>vouchers issues</h2>
 
-  <%=form.fields_for :issues do |f|%>
-    
-     <% @items.each do |i|%>
-          <%= i.name %>
-          <div class="field">
-            <%= f.label :item_id %>
-            <%= f.hidden_field :item_id, :value => i.id, id: :issue_item_id %>
-          </div>
+<div>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>issue id</th>
+      <th>Item Name</th>
+      <th>Qty</th>
+      <th>Voucher Id</th>
+      <th>edit</th>
+      <th>delete</th>
+      
+    </tr>
+  </thead>
 
-          <div class="field">
-            <%= f.label :qty %>
-            <%= f.text_field :qty, id: :issue_qty %>
-          </div>
-    <% end%>
+  <tbody>
+  <% @issues.each do |issue| %>
+
+    <tr>
+      <td><%= issue.id%></td>
+      <td><%= Item.find(issue.item_id).name%></td>
+      <td><%= issue.qty%></td>
+      <td><%= issue.voucher.id%></td>
+      <td><%= link_to "edit", edit_voucher_issue_path(voucher_id: @voucher.id, id:issue.id)%></td>
+      <td><%= link_to "Delete", [@voucher, issue], method: :delete, confirm: "Are you sure! you want to delete the issue" %></td>
+      
+      
+
+    </tr>
   <% end %>
+    
+  </tbody>
+    
+  </table>
+</div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+

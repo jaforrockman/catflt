@@ -1,0 +1,27 @@
+<%= form_with(model: catering, local: true) do |form| %>
+  <% if catering.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(catering.errors.count, "error") %> prohibited this catering from being saved:</h2>
+
+      <ul>
+      <% catering.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :catering_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :short_name %>
+    <%= form.text_field :short_name, id: :catering_short_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
