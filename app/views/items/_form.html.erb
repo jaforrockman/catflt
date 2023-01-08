@@ -12,10 +12,17 @@
   <% end %>
 
   <div class="field">
+<<<<<<< HEAD
   <% if Item.any? %>
   <h4>Last Item Number: <%= Item.last.inum%></h4>
   <% else %>
   Create your first Item<br/>
+=======
+  <% if Item.any?%>
+      <h4>Last Item Number: <%= Item.last.inum%></h4>
+    <% else %>
+    Create your first Item<br/>
+>>>>>>> 0f53236619bc59007518c1ddc783c96226b4b5c7
   <% end %>
     <%= form.label :inum %>
     <%= form.number_field :inum, id: :item_inum %>
