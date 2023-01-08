@@ -1,0 +1,2 @@
+class IvNum < ApplicationRecord
+end

@@ -16,6 +16,13 @@
     <%= form.text_field :name, id: :voucher_name %>
   </div>
 
+  
+    <div class="field">
+    <%= form.label :iv %>
+    <%= form.number_field :iv, id: :voucher_iv %>
+  </div>
+
+
   <div class="field">
     <%= form.label :mess_id %>
     <%= collection_select(:voucher, :mess_id, Mess.all, :id, :name, prompt: true) %>

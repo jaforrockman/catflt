@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :iv_nums
   devise_for :users
   resources :ranks
   resources :users

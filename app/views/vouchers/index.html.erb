@@ -5,6 +5,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+    <th>iv</th>
      <th>Catering</th>
       <th>Name</th>
       <th>Mess</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @vouchers.each do |voucher| %>
       <tr>
+      <td><%= voucher.iv %></td>
         <td><%= Catering.find(voucher.catering_id).name %></td>
         <td><%= voucher.name %></td>
         <td><%= Mess.find(voucher.mess_id).name %></td>

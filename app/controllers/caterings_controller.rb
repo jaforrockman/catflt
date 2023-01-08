@@ -8,6 +8,7 @@ class CateringsController < ApplicationController
 
   # GET /caterings/1 or /caterings/1.json
   def show
+    @vouchers = Catering.find(params[:id]).vouchers
   end
 
   # GET /caterings/new
