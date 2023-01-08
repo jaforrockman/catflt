@@ -18,7 +18,13 @@
 
   <div class="field">
     <%= form.label :mess_id %>
-    <%= form.number_field :mess_id, id: :voucher_mess_id %>
+    <%= collection_select(:voucher, :mess_id, Mess.all, :id, :name, prompt: true) %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :catering_id %>
+    <%= collection_select(:voucher, :catering_id, Catering.all, :id, :name, prompt: true) %>
   </div>
 <br/>
 <h2>vouchers issues</h2>

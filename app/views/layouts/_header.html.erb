@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home </a>
+        <a class="nav-link" href="/base_page">Base Page </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/items">Items Controller</a>
@@ -24,9 +24,20 @@
        <li class="nav-item">
         <a class="nav-link" href="/users">users Controller</a>
       </li>
-             <li class="nav-item">
+
+      <li class="nav-item">
         <a class="nav-link" href="/ranks">Ranks Controller</a>
       </li>
+
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <button><%= link_to "profile", current_user %></button>
+            <button><%= link_to "sign out" , destroy_user_session_path, method: :delete %> </button>
+          <% else %>
+            <button> <%= link_to "sign up", new_user_registration_path%> </button>
+            <button><%= link_to "sign in" , new_user_session_path %> </button>
+          <% end %>
+        </li>
         
     </ul>
 

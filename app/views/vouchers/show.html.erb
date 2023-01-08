@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Catering:</strong>
+  <%= Catering.find(@voucher.catering_id).name %>
+</p>
 <p>
   <strong>Name:</strong>
   <%= @voucher.name %>
@@ -7,7 +10,7 @@
 
 <p>
   <strong>Mess:</strong>
-  <%= @voucher.mess_id %>
+  <%= Mess.find(@voucher.mess_id).name %>
 </p>
 
 <div>
