@@ -17,8 +17,17 @@
   </div>
 
     <div class="field">
-    <%= form.label :iv %>
-    <%= form.number_field :iv, id: :voucher_iv %>
+    <% if Voucher.any? %>
+    <h3> Your Last iv number was: <%= Voucher.last.iv_numb%></h3>
+
+    <% iv_number = Voucher.last.iv_numb+=1 %>
+     <h3> Current new iv: <%= iv_number %></h3>
+    <% else %>
+    <% iv_number = 1 %>
+    <h3>Create Fist Voucher and Iv Will be: 01</h3>
+    <% end %>
+    <%= form.label :iv_numb %>
+    <%= form.hidden_field :iv_numb, value:iv_number, id: :voucher_iv_numb %>
   </div>
 
   <div class="field">
@@ -33,20 +42,20 @@
   </div>
 <br/>
 <h2>vouchers issues</h2>
+     <% Item.all.each do |i|%>
+    <%=form.fields_for :issues do |f|%>
 
-  <%=form.fields_for :issues do |f|%>
+             <div class="field">
+              <%#= f.label  %> <%= i.name%> 
+              <%= f.hidden_field :item_id, value:i.id, id: :issue_item_id %>
+            </div>
 
-   
-           <div class="field">
-            <%= f.label :item_id %>
-            <%= f.number_field :item_id, id: :issue_item_id %>
-          </div>
-
-          <div class="field">
-            <%= f.label :qty %>
-            <%= f.text_field :qty, id: :issue_qty %>
-          </div>
-   
+            <div class="field">
+              <%= f.label :qty %>
+              <%= f.text_field :qty, id: :issue_qty %>
+            </div>
+     
+    <% end %>
   <% end %>
 
   <div class="actions">

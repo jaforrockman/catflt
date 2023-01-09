@@ -16,7 +16,7 @@
   <tbody>
     <% @vouchers.each do |voucher| %>
       <tr>
-      <td><%= voucher.iv %></td>
+      <td><%= voucher.iv_numb %></td>
         <td><%= Catering.find(voucher.catering_id).name %></td>
         <td><%= voucher.name %></td>
         <td><%= Mess.find(voucher.mess_id).name %></td>
