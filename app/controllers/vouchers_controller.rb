@@ -18,6 +18,7 @@ class VouchersController < ApplicationController
     @voucher = Voucher.new
     @items = Item.all
     @voucher.issues.build
+   
     
   end
 
@@ -74,6 +75,6 @@ class VouchersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def voucher_params
-      params.require(:voucher).permit(:name, :mess_id, :catering_id, :iv_num_id,  issues_attributes: [:item_id, :qty, :voucher_id])
+      params.require(:voucher).permit(:name, :mess_id, :catering_id, :iv_num_id,  issues_attributes: [:item_id, :qty, :voucher_id], iv_nums_attributes: [:i_num])
     end
 end

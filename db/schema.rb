@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230108171937) do
+ActiveRecord::Schema.define(version: 20230107104807) do
 
   create_table "caterings", force: :cascade do |t|
     t.string "name"
@@ -39,12 +39,6 @@ ActiveRecord::Schema.define(version: 20230108171937) do
     t.decimal "modc_scale"
     t.decimal "civ1_scale"
     t.decimal "civ2_scale"
-  end
-
-  create_table "iv_nums", force: :cascade do |t|
-    t.integer "i_num"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "messes", force: :cascade do |t|

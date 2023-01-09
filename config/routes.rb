@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :iv_nums
+  
   devise_for :users
   resources :ranks
   resources :users
   resources :caterings
   resources :vouchers do
   	resources :issues, exept: [:index], controller:'vouchers/issues'
+    
   end
   
   resources :mess_types
