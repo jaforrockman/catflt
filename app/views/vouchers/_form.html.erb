@@ -11,55 +11,124 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :voucher_name %>
-  </div>
 
-    <div class="field">
-    <% if Voucher.any? %>
-    <h3> Your Last iv number was: <%= Voucher.last.iv_numb%></h3>
 
-    <% iv_number = Voucher.last.iv_numb+=1 %>
-     <h3> Current new iv: <%= iv_number %></h3>
-    <% else %>
-    <% iv_number = 1 %>
-    <h3>Create Fist Voucher and Iv Will be: 01</h3>
-    <% end %>
-    <%= form.label :iv_numb %>
-    <%= form.hidden_field :iv_numb, value:iv_number, id: :voucher_iv_numb %>
-  </div>
+<h6 align="right">BAF F-10045</h6>
+<h1 align="center">Ration Demand & Issue Voucher</h1>
+<h4 align="center">(Free Issue Dry Ration)</h4>
 
-  <div class="field">
-    <%= form.label :mess_id %>
-    <%= collection_select(:voucher, :mess_id, Mess.all, :id, :name, prompt: true) %>
+<table class= "table table-bordered">
+    <thead>
+        <tr>
+           <th colspan="2"> Base</th>
+           <th>Receiver</th>
+           <th>DRS</th>
+           <th>IV Number</th>
+         </tr>
+      </thead>
+      <tbody>
+        <tr>
+           <td colspan="2">
+              <%= collection_select(:voucher, :catering_id, Catering.all, :id, :name, prompt: true) %>
+           </td>
+           <td> 
+              <%= collection_select(:voucher, :mess_id, Mess.all, :id, :name, prompt: true) %>
+          </td>
+           <td>
+             500X7<br/>
+             = 3500
+           </td>
+           <td>
+                <% if Voucher.any? %>
+                  <h6> Your Last iv number was: <%= Voucher.last.iv_numb%></h6>
+                     <% iv_number = Voucher.last.iv_numb+=1 %>
+                     <h6> Current new iv: <%= iv_number %></h6>
+                    <% else %>
+                      <% iv_number = 1 %>
+                      <h6>Create Fist Voucher and Iv Will be: 01</h6>
+              <% end %>
+    
+          <%= form.hidden_field :iv_numb, value:iv_number, id: :voucher_iv_numb %></td>
+         </tr>
+          <tr>
+           <td colspan="2">Duration</td>
+           <td colspan="2">Requesting Person</td>
+           <td>Date</td>
+         </tr>
+         <tr>
+           <td>From</td>
+           <td>To</td>
+           <td colspan="2" rowspan="2"> </td>
+           <td rowspan="2"> <%#= @voucher.created_at.strftime('%d-%b-%y')%> </td>
+         </tr>
+         <tr>
+           <td>15 Jan 23</td>
+           <td>21 Jan 23</td>
+         </tr>
+          <tr>
+           <td>Item</td>
+           <td>Unit</td>
+           <td>Demand Qty</td>
+           <td>Issue Qty</td>
+           <td>Remarks</td>
+         </tr>
 
-  </div>
 
-  <div class="field">
-    <%= form.label :catering_id %>
-    <%= collection_select(:voucher, :catering_id, Catering.all, :id, :name, prompt: true) %>
-  </div>
-<br/>
-<h2>vouchers issues</h2>
-     <% Item.all.each do |i|%>
+
+      <% Item.all.each do |i|%>
     <%=form.fields_for :issues do |f|%>
+           <tr>
+             
 
-             <div class="field">
-              <%#= f.label  %> <%= i.name%> 
+            
+             <td> <%= i.name%> 
               <%= f.hidden_field :item_id, value:i.id, id: :issue_item_id %>
-            </div>
+              </td>
+              <td> kg</td>
 
-            <div class="field">
-              <%= f.label :qty %>
-              <%= f.text_field :qty, id: :issue_qty %>
-            </div>
+              <td>
+              DRS x scale
+               </td>
+
+           <td>
+              
+              <%= f.number_field :qty, id: :issue_qty %>
+           </td>
+           <td></td>
      
     <% end %>
   <% end %>
+           </tr>
+      <%# end %>
+       
+       <tr>
+           <td>Authorise</td>
+           <td colspan="2">Issuer</td>
+           <td>Prepared By</td>
+           <td>Receiver Sign</td>
+           
+         </tr>
 
-  <div class="actions">
-    <%= form.submit %>
+         <tr >
+           <td class="my-class">KYSHOYKHOY<BR/>
+           SWO</td>
+           <td colspan="2">ARMAN <BR/>
+           SGT</td>
+           <td>ZAFOR<BR/>
+           SGT</td>
+           <td>NAYON<BR/>
+           CPL</td>
+           
+         </tr>
+
+
+      </tbody>
+</table>
+
+
+
+  <div >
+    <%= form.submit class: "btn btn-success"%>
   </div>
 <% end %>
 

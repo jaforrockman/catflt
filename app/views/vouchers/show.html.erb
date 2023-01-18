@@ -1,61 +1,86 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Catering:</strong>
-  <%= Catering.find(@voucher.catering_id).name %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @voucher.name %>
-</p>
-<p>
-  <strong>iv:</strong>
-  <%= @voucher.iv_numb %>
-</p>
 
-<p>
-  <strong>Mess:</strong>
-  <%= Mess.find(@voucher.mess_id).name %>
-</p>
+<h6 align="right">BAF F-10045</h6>
+<h1 align="center">Ration Demand & Issue Voucher</h1>
+<h4 align="center">(Free Issue Dry Ration)</h4>
 
-<div>
-	<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>issue id</th>
-			<th>Item Name</th>
-			<th>Qty</th>
-			<th>Voucher Id</th>
-			<th>edit</th>
-			<th>delete</th>
-			
-		</tr>
-	</thead>
+<table class= "table table-bordered">
+		<thead>
+		    <tr>
+			     <th colspan="2"> Base</th>
+			     <th>Receiver</th>
+			     <th>DRS</th>
+			     <th>IV Number</th>
+		     </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+			     <td colspan="2"><%= Catering.find(@voucher.catering_id).name %></td>
+			     <td><%= Mess.find(@voucher.mess_id).name %></td>
+			     <td>500X7<br/>
+			     = 3500</td>
+			     <td><%= @voucher.iv_numb %></td>
+		     </tr>
+		      <tr>
+			     <td colspan="2">Duration</td>
+			     <td colspan="2">Requesting Person</td>
+			     <td>Date</td>
+		     </tr>
+		     <tr>
+			     <td>From</td>
+			     <td>To</td>
+			     <td colspan="2" rowspan="2"> </td>
+			     <td rowspan="2"> <%= @voucher.created_at.strftime('%d-%b-%y')%> </td>
+		     </tr>
+		     <tr>
+			     <td>15 Jan 23</td>
+			     <td>21 Jan 23</td>
+		     </tr>
+		      <tr>
+			     <td>Item</td>
+			     <td>Unit</td>
+			     <td>Demand Qty</td>
+			     <td>Issue Qty</td>
+			     <td>Remarks</td>
+		     </tr>
+			<% @issues.each do |issue| %>
+			     <tr>
+				     <td><%= Item.find(issue.item_id).name%></td>
+				     <td>kg</td>
+				     <td> <%= Item.find(issue.item_id).am_scale %> x Total DRS</td>
+				     <td><%= link_to issue.qty, edit_voucher_issue_path(voucher_id: @voucher.id, id:issue.id) %></td>
+				     <td>-</td>
+			     </tr>
+			<% end %>
+ 			 
+ 			 <tr>
+			     <td>Authorise</td>
+			     <td colspan="2">Issuer</td>
+			     <td>Prepared By</td>
+			     <td>Receiver Sign</td>
+			     
+		     </tr>
 
-	<tbody>
-	<% @issues.each do |issue| %>
+		     <tr >
+			     <td class="my-class">KYSHOYKHOY<BR/>
+			     SWO</td>
+			     <td colspan="2">ARMAN <BR/>
+			     SGT</td>
+			     <td>ZAFOR<BR/>
+			     SGT</td>
+			     <td>NAYON<BR/>
+			     CPL</td>
+			     
+		     </tr>
 
-		<tr>
-			<td><%= issue.id%></td>
-			<td><%= Item.find(issue.item_id).name%></td>
-			<td><%= issue.qty%></td>
-			<td><%= issue.voucher.id%></td>
-			<td><%= link_to "edit", edit_voucher_issue_path(voucher_id: @voucher.id, id:issue.id)%></td>
-			<td><%= link_to "Delete", [@voucher, issue], method: :delete, confirm: "Are you sure! you want to delete the issue" %></td>
-			
-			
 
-		</tr>
-	<% end %>
-		
-	</tbody>
-		
-	</table>
-</div>
+		  </tbody>
+</table>
 
 
 <%= link_to 'Edit', edit_voucher_path(@voucher) %> |
 <%= link_to 'Back', vouchers_path %>
 <br/>
 
-<%= link_to " Add new Issue", new_voucher_issue_path(@voucher), class: 'pull-right'%>
+
 
