@@ -65,6 +65,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:inum, :name, :status, :offr_scale, :am_scale, :modc_scale, :civ1_scale, :civ2_scale)
+      params.require(:item).permit(:inum, :name, :mes_unit, :status, :offr_scale, :am_scale, :modc_scale, :civ1_scale, :civ2_scale)
     end
 end

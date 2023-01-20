@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230109164201) do
+ActiveRecord::Schema.define(version: 20230120141928) do
 
   create_table "caterings", force: :cascade do |t|
     t.string "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20230109164201) do
     t.decimal "modc_scale"
     t.decimal "civ1_scale"
     t.decimal "civ2_scale"
+    t.string "mes_unit"
   end
 
   create_table "messes", force: :cascade do |t|

@@ -1,45 +1,48 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">CATFLT LOGO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="true" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/base_page">Base Page </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/items">Items Controller</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/messes">Mess Controller</a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link" href="/vouchers">Vouchers Controller</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/caterings">Catering Controller</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/users">users Controller</a>
-      </li>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="true" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-      <li class="nav-item">
-        <a class="nav-link" href="/ranks">Ranks Controller</a>
-      </li>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarText" align="pull-right">
+      <ul class="navbar-nav mr-auto">
+          <li>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">controllers</button>
 
-        <li class="nav-item">
-          <% if user_signed_in? %>
-            <button><%= link_to "profile", current_user %></button>
-            <button><%= link_to "sign out" , destroy_user_session_path, method: :delete %> </button>
-          <% else %>
-            <button> <%= link_to "sign up", new_user_registration_path%> </button>
-            <button><%= link_to "sign in" , new_user_session_path %> </button>
-          <% end %>
-        </li>
-        
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/items">Items Controller</a></li>
+                    <li><a class="dropdown-item" href="/messes">Mess Controller</a></li>
+                    <li><a class="dropdown-item" href="/vouchers">Vouchers Controller</a></li>
+                    <li><a class="dropdown-item" href="/caterings">Catering Controller</a></li>
+                    <li><a class="dropdown-item" href="/users">users Controller</a></li>
+                    <li><a class="dropdown-item" href="/ranks">Ranks Controller</a></li>
+                  </ul>
+            </div>
+          </li>
+          &nbsp
+          <li>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Pages</button>
+
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/base_page">Base Page </a></li>
+                    <li><a class="dropdown-item" href="/free_mrr">Free MRR </a></li>
+                   <li><a class="dropdown-item" href="/free_drt">Free DRT </a></li>
+                  </ul>
+            </div>
+          </li>
+           &nbsp
+          <li class="nav-item">
+            <% if user_signed_in? %>
+              <button class="btn btn-warning"><%= link_to "profile", current_user %></button> &nbsp
+              <button class="btn btn-warning"><%= link_to "sign out" , destroy_user_session_path, method: :delete %> </button>
+            <% else %>
+              <button class="btn btn-warning"> <%= link_to "sign up", new_user_registration_path%> </button> &nbsp
+              <button class="btn btn-warning"><%= link_to "sign in" , new_user_session_path %> </button>
+            <% end %>
+          </li>
+          
     </ul>
 
-  </div>
+    </div>
 </nav>

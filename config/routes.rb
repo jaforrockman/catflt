@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/base_page' => 'pages#base_page'
+  get '/free_mrr' => 'pages#free_mrr'
+  get '/free_drt' => 'pages#free_drt'
   get '/about' => 'pages#about'
 
   resources :items

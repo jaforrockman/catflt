@@ -1,0 +1,114 @@
+<h1 align="center">
+	
+	<u>FREE DRT</u>
+</h1>
+<hr><br>
+
+<table class="table table-hover">
+
+<thead>
+	<tr>
+		<th colspan="50%">Daily Dry ration Adjustment Documents</th>
+		<th colspan="50%">Daily Dry ration Adjustment Documents</th>
+	</tr>
+	<tr>
+		<th >Description</th>
+		<th colspan="50%">Items</th>
+		<th colspan="25%">Hospital Comforts</th>
+		<th colspan="25%">Packing Materials</th>
+	</tr>
+	<tr>
+		<th rowspan="2">Date/Name</th>
+		<th rowspan="2">Ext RV/Int IV</th>
+		<th rowspan="2">No.</th>
+		<th>Items</th>
+		<% @items.each do |i|%>
+			<th><%= i.name %></th>
+		<% end %>
+		<th colspan="50%"></th>
+		<th colspan="50%"></th>
+	</tr>
+	<tr>
+		<th>DRS</th>
+		<% @items.each do |i|%>
+			<th><%= i.mes_unit %></th>
+		<% end %>
+		<th colspan="50%"></th>
+		<th colspan="50%"></th>
+
+	</tr>
+
+</thead>
+<tbody >
+<!--//BF & Collection part!-->
+	<tr>
+		<td>01-Jan-23</td>
+		<td colspan="3">BF</td>
+		
+		<% @items.each do |i|%>
+			<td>100</td>
+		<% end %>
+		<td colspan="50%"></td>
+		<td colspan="50%"></td>
+	</tr>
+	<tr>
+		<td>01-Jan-23</td>
+		<td>Ext Rv</td>
+		<td>05</td>
+		<td> - </td>
+		<% @items.each do |i|%>
+			<td>05.00</td>
+		<% end %>
+		<td colspan="50%"></td>
+		<td colspan="50%"></td>
+	</tr>
+
+	<tr>
+		<td colspan="4">Total BF+REC =</td>
+		
+		
+		<% @items.each do |i|%>
+			<td>105.00</td>
+		<% end %>
+		<td colspan="50%"></td>
+		<td colspan="50%"></td>
+	</tr>
+	<!--//collection part end!-->
+
+
+<!--//issue part!-->
+	<% @vouchers.each do |v|%>
+
+		<tr>
+			<td><%= v.created_at.strftime('%d-%b-%y') %></td>
+			<td>Int IV</td>
+			<td><%= v.iv_numb %></td>
+			<td> 500 </td>
+			
+			<% v.issues.each do |i|%>
+			
+				<td><% if i.qty > 0%> <%= i.qty %><% else %> - <%end%></td>
+
+			<% end %>
+			<td colspan="50%"></td>
+			<td colspan="50%"></td>
+		</tr>
+		<%end%>
+
+		<tr>
+		<td colspan="3">Total Issue =</td>
+		<td>1000</td>
+		
+		
+		<% @items.each do |i|%>
+			<td>105.00</td>
+		<% end %>
+		<td colspan="50%"></td>
+		<td colspan="50%"></td>
+	</tr
+
+	
+</tbody>
+	
+
+</table>

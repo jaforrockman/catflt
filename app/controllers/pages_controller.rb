@@ -9,6 +9,15 @@ class PagesController < ApplicationController
 
   end
 
+  def free_drt
+    @items = Item.all
+    @vouchers = Voucher.all
+    
+  end
+
+  def free_mrr
+  end
+
   def about
   end
 end
