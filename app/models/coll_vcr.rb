@@ -1,0 +1,2 @@
+class CollVcr < ApplicationRecord
+end

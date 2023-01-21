@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Coll Vcrs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Coll date</th>
+      <th>Invoice num</th>
+      <th>References</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coll_vcrs.each do |coll_vcr| %>
+      <tr>
+        <td><%= coll_vcr.company_id %></td>
+        <td><%= coll_vcr.coll_date %></td>
+        <td><%= coll_vcr.invoice_num %></td>
+        <td><%= link_to 'Show', coll_vcr %></td>
+        <td><%= link_to 'Edit', edit_coll_vcr_path(coll_vcr) %></td>
+        <td><%= link_to 'Destroy', coll_vcr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coll Vcr', new_coll_vcr_path %>

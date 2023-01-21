@@ -1,0 +1,33 @@
+<%= form_with(model: coll_vcr, local: true) do |form| %>
+  <% if coll_vcr.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(coll_vcr.errors.count, "error") %> prohibited this coll_vcr from being saved:</h2>
+
+      <ul>
+      <% coll_vcr.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.number_field :company_id, id: :coll_vcr_company_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coll_date %>
+    <%= form.date_select :coll_date, id: :coll_vcr_coll_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invoice_num %>
+    <%= form.number_field :invoice_num, id: :coll_vcr_invoice_num %>
+  </div>
+
+ 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

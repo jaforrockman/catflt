@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :coll_vcrs
   resources :collections
   devise_for :users
   resources :ranks
