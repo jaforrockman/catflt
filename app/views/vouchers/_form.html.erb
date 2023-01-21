@@ -42,13 +42,13 @@
                 <% if Voucher.any? %>
                   <h6> Your Last iv number was: <%= Voucher.last.iv_numb%></h6>
                      <% iv_number = Voucher.last.iv_numb+=1 %>
-                     <h6> Current new iv: <%= iv_number %></h6>
+                     <!--<h6> Current new iv: <%= iv_number %></h6>-->
                     <% else %>
                       <% iv_number = 1 %>
                       <h6>Create Fist Voucher and Iv Will be: 01</h6>
               <% end %>
     
-          <%= form.hidden_field :iv_numb, value:iv_number, id: :voucher_iv_numb %></td>
+          <%= form.number_field :iv_numb, value:iv_number, id: :voucher_iv_numb %></td>
          </tr>
           <tr>
            <td colspan="2">Duration</td>

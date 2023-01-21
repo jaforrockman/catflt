@@ -8,6 +8,7 @@ class MessesController < ApplicationController
 
   # GET /messes/1 or /messes/1.json
   def show
+    @vouchers = Mess.find(params[:id]).vouchers
   end
 
   # GET /messes/new

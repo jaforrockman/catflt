@@ -8,14 +8,15 @@
 
 <thead>
 	<tr>
-		<th colspan="50%">Daily Dry ration Adjustment Documents</th>
-		<th colspan="50%">Daily Dry ration Adjustment Documents</th>
+		<th colspan="100%">Daily Dry ration Adjustment Documents</th>
+		
 	</tr>
 	<tr>
 		<th >Description</th>
-		<th colspan="50%">Items</th>
-		<th colspan="25%">Hospital Comforts</th>
-		<th colspan="25%">Packing Materials</th>
+		<% span = @items.count%>
+		<th colspan=<%= span+3 %>>Items</th>
+		<th >Hospital Comforts</th>
+		<th >Packing Materials</th>
 	</tr>
 	<tr>
 		<th rowspan="2">Date/Name</th>
@@ -25,16 +26,16 @@
 		<% @items.each do |i|%>
 			<th><%= i.name %></th>
 		<% end %>
-		<th colspan="50%"></th>
-		<th colspan="50%"></th>
+		<th ></th>
+		<th ></th>
 	</tr>
 	<tr>
 		<th>DRS</th>
 		<% @items.each do |i|%>
 			<th><%= i.mes_unit %></th>
 		<% end %>
-		<th colspan="50%"></th>
-		<th colspan="50%"></th>
+		<th ></th>
+		<th ></th>
 
 	</tr>
 
@@ -42,14 +43,14 @@
 <tbody >
 <!--//BF & Collection part!-->
 	<tr>
-		<td>01-Jan-23</td>
-		<td colspan="3">BF</td>
+		<td style="background-color: #DDE1CC">01-Jan-23</td>
+		<td style="background-color: #DDE1CC" colspan="3">BF</td>
 		
 		<% @items.each do |i|%>
-			<td>100</td>
+			<td style="background-color: #DDE1CC">100</td>
 		<% end %>
-		<td colspan="50%"></td>
-		<td colspan="50%"></td>
+		<td style="background-color: #DDE1CC" ></td>
+		<td style="background-color: #DDE1CC" ></td>
 	</tr>
 	<tr>
 		<td>01-Jan-23</td>
@@ -59,8 +60,8 @@
 		<% @items.each do |i|%>
 			<td>05.00</td>
 		<% end %>
-		<td colspan="50%"></td>
-		<td colspan="50%"></td>
+		<td ></td>
+		<td ></td>
 	</tr>
 
 	<tr>
@@ -70,8 +71,8 @@
 		<% @items.each do |i|%>
 			<td>105.00</td>
 		<% end %>
-		<td colspan="50%"></td>
-		<td colspan="50%"></td>
+		<td ></td>
+		<td ></td>
 	</tr>
 	<!--//collection part end!-->
 
@@ -90,21 +91,22 @@
 				<td><% if i.qty > 0%> <%= i.qty %><% else %> - <%end%></td>
 
 			<% end %>
-			<td colspan="50%"></td>
-			<td colspan="50%"></td>
+			<td ></td>
+			<td ></td>
 		</tr>
 		<%end%>
 
 		<tr>
-		<td colspan="3">Total Issue =</td>
-		<td>1000</td>
+		<td colspan="3" style="background-color: #DDE1CC" >Total Issue =</td>
+		<td style="background-color: #DDE1CC">1000</td>
 		
 		
 		<% @items.each do |i|%>
-			<td>105.00</td>
+			<% total = Item.find(i.id).issues.sum(&:qty)%>
+			<td style="background-color: #DDE1CC"><%= total %></td>
 		<% end %>
-		<td colspan="50%"></td>
-		<td colspan="50%"></td>
+		<td style="background-color: #DDE1CC" ></td>
+		<td style="background-color: #DDE1CC" ></td>
 	</tr
 
 	

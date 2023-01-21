@@ -18,16 +18,11 @@
 
    <div class="field">
     <%= form.label :iv_numb %>
-    <%= form.text_field :iv_numb, id: :voucher_iv_numb %>
+    <%= form.number_field :iv_numb, id: :voucher_iv_numb %>
   </div>
 
   
-    <div class="field">
-    <%= form.label :iv %>
-    <%= form.number_field :iv, id: :voucher_iv %>
-  </div>
-
-
+  
   <div class="field">
     <%= form.label :mess_id %>
     <%= collection_select(:voucher, :mess_id, Mess.all, :id, :name, prompt: true) %>
