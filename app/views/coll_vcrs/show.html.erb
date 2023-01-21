@@ -15,6 +15,23 @@
   <%= @coll_vcr.invoice_num %>
 </p>
 
+<table>
+	<tr>
+		<th>Item Name</th>
+		<th>Qty</th>
+	</tr>
+<% @coll_vcr.collections.each do|c|%>
+	
+	<tr>
+
+		<td><%= Item.find(c.item_id).name %></td>
+		<td><%=link_to c.qty, edit_coll_vcr_collection_path(@coll_vcr, c.item_id) %></td>
+	</tr>
+<%end%>
+</table>
+
+
+
 
 <%= link_to 'Edit', edit_coll_vcr_path(@coll_vcr) %> |
 <%= link_to 'Back', coll_vcrs_path %>

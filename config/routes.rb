@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   
-  resources :coll_vcrs
-  resources :collections
+  resources :coll_vcrs do
+    resources :collections, except: [:index], controller: 'coll_vcrs/collections'
+  end
+
   devise_for :users
   resources :ranks
   resources :users
   resources :caterings
   resources :vouchers do
   	resources :issues, exept: [:index], controller:'vouchers/issues'
-    
   end
   
   resources :mess_types

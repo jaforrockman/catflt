@@ -8,20 +8,26 @@ class CollVcrsController < ApplicationController
 
   # GET /coll_vcrs/1 or /coll_vcrs/1.json
   def show
+    @coll_vcr = CollVcr.find(params[:id])
+    @collections = @coll_vcr.collections
   end
 
   # GET /coll_vcrs/new
   def new
     @coll_vcr = CollVcr.new
+    @items = Item.all
+    @coll_vcr.collections.build
   end
 
   # GET /coll_vcrs/1/edit
   def edit
+    @items = Item.all
   end
 
   # POST /coll_vcrs or /coll_vcrs.json
   def create
     @coll_vcr = CollVcr.new(coll_vcr_params)
+    @collection = @coll_vcr
 
     respond_to do |format|
       if @coll_vcr.save
@@ -65,6 +71,6 @@ class CollVcrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def coll_vcr_params
-      params.require(:coll_vcr).permit(:company_id, :coll_date, :invoice_num, :references)
+      params.require(:coll_vcr).permit(:company_id, :coll_date, :invoice_num, :references, collections_attributes: [:item_id, :qty, :coll_vcr_id])
     end
 end

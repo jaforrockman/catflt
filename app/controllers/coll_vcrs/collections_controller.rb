@@ -1,5 +1,6 @@
-class CollectionsController < ApplicationController
+class CollVcrs::CollectionsController < ApplicationController
   before_action :set_collection, only: %i[ show edit update destroy ]
+  before_action :set_coll_vcr, only: %i[ show edit update destroy ]
 
   # GET /collections or /collections.json
   def index
@@ -17,6 +18,8 @@ class CollectionsController < ApplicationController
 
   # GET /collections/1/edit
   def edit
+    @coll_vcr = CollVcr.find(params[:coll_vcr_id])
+    
   end
 
   # POST /collections or /collections.json
@@ -38,7 +41,7 @@ class CollectionsController < ApplicationController
   def update
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to collection_url(@collection), notice: "Collection was successfully updated." }
+        format.html { redirect_to @coll_vcr, notice: "Collection was successfully updated." }
         format.json { render :show, status: :ok, location: @collection }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,9 +65,11 @@ class CollectionsController < ApplicationController
     def set_collection
       @collection = Collection.find(params[:id])
     end
-
+    def set_coll_vcr
+      @coll_vcr = CollVcr.find(params[:coll_vcr_id])
+    end
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:item_id, :qty)
+      params.require(:collection).permit(:item_id, :qty, :coll_vcr_id)
     end
 end
