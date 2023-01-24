@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :companies
   resources :coll_vcrs do
     resources :collections, except: [:index], controller: 'coll_vcrs/collections'
   end
