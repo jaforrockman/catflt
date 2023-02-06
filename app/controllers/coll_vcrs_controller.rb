@@ -73,10 +73,6 @@ class CollVcrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def coll_vcr_params
-<<<<<<< HEAD
       params.require(:coll_vcr).permit(:company_id, :coll_date, :invoice_num, :ext_rv, collections_attributes: [:item_id, :qty, :coll_vcr_id])
-=======
-      params.require(:coll_vcr).permit(:company_id, :coll_date, :invoice_num, :ext_rv, :catering_id, :references, collections_attributes: [:item_id, :qty, :coll_vcr_id])
->>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
     end
 end

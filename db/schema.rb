@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20230206143655) do
-=======
-ActiveRecord::Schema.define(version: 20230124101857) do
->>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
 
   create_table "caterings", force: :cascade do |t|
     t.string "name"
@@ -30,10 +26,6 @@ ActiveRecord::Schema.define(version: 20230124101857) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ext_rv"
-<<<<<<< HEAD
-=======
-    t.integer "catering_id"
->>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
   end
 
   create_table "collections", force: :cascade do |t|
@@ -46,12 +38,6 @@ ActiveRecord::Schema.define(version: 20230124101857) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-<<<<<<< HEAD
-=======
-    t.text "Address"
-    t.string "phone"
-    t.boolean "status"
->>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

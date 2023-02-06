@@ -10,23 +10,15 @@
       </ul>
     </div>
   <% end %>
-<<<<<<< HEAD
   
   <div class="field">
       <%= form.label :ext_rv %>
       <%= form.number_field :ext_rv, id: :coll_vcr_ext_rv %>
-=======
-
-  <div>
-    Catering: <%= collection_select(:coll_vcr, :catering_id, Catering.all, :id, :name, prompt: true) %>
->>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
   </div>
   <div class="field">
     <%= form.label :company_id %>
-     <%= collection_select(:coll_vcr, :company_id, Company.all, :id, :name, prompt: true) %>
+    <%= form.number_field :company_id, id: :coll_vcr_company_id %>
   </div>
-
-  
 
   <div class="field">
     <%= form.label :coll_date %>
@@ -36,10 +28,6 @@
   <div class="field">
     <%= form.label :invoice_num %>
     <%= form.number_field :invoice_num, id: :coll_vcr_invoice_num %>
-  </div>
-   <div class="field">
-    <%= form.label :ext_rv %>
-    <%= form.number_field :ext_rv, id: :coll_vcr_ext_rv %>
   </div>
 <br>
 <br>

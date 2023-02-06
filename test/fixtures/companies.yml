@@ -2,18 +2,6 @@
 
 one:
   name: MyString
-<<<<<<< HEAD
 
 two:
   name: MyString
-=======
-  Address: MyText
-  phone: MyString
-  status: 
-
-two:
-  name: MyString
-  Address: MyText
-  phone: MyString
-  status: 
->>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
