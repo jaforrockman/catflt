@@ -96,17 +96,17 @@
 		</tr>
 		<%end%>
 
-		<tr>
-		<td colspan="3" style="background-color: #DDE1CC" >Total Issue =</td>
-		<td style="background-color: #DDE1CC">1000</td>
+		<tr style="background-color: #DDE1CC">
+		<td colspan="3"  >Total Issue =</td>
+		<td >1000</td>
 		
 		
 		<% @items.each do |i|%>
 			<% total = Item.find(i.id).issues.sum(&:qty)%>
-			<td style="background-color: #DDE1CC"><%= total %></td>
+			<td ><%= total %></td>
 		<% end %>
-		<td style="background-color: #DDE1CC" ></td>
-		<td style="background-color: #DDE1CC" ></td>
+		<td  ></td>
+		<td  ></td>
 	</tr
 
 	

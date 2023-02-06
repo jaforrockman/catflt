@@ -38,6 +38,7 @@
              500X7<br/>
              = 3500
            </td>
+           
            <td>
                 <% if Voucher.any? %>
                   <h6> Your Last iv number was: <%= Voucher.last.iv_numb%></h6>
@@ -48,7 +49,9 @@
                       <h6>Create Fist Voucher and Iv Will be: 01</h6>
               <% end %>
     
-          <%= form.number_field :iv_numb, value:iv_number, id: :voucher_iv_numb %></td>
+          <%= form.number_field :iv_numb, value:iv_number, id: :voucher_iv_numb %>
+          </td>
+
          </tr>
           <tr>
            <td colspan="2">Duration</td>

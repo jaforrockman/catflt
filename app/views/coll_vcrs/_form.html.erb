@@ -12,8 +12,22 @@
   <% end %>
 
   <div class="field">
+      <%= form.label :ext_rv %>
+              <% if CollVcr.any? %>
+                  <h6> Your Last Ext Rv number was: <%= CollVcr.last.ext_rv%></h6>
+                     <% ext_rv = CollVcr.last.ext_rv+=1 %>
+                     <!--<h6> Current new iv: <%= ext_rv %></h6>-->
+                    <% else %>
+                      <% ext_rv = 1 %>
+                      <h6>Create Fist CollVcr and Iv Will be: 01</h6>
+              <% end %>
+    
+          <%= form.number_field :ext_rv, value:ext_rv, id: :coll_vcr_ext_rv %>
+  </div>
+
+  <div class="field">
     <%= form.label :company_id %>
-    <%= form.number_field :company_id, id: :coll_vcr_company_id %>
+    <%= collection_select(:coll_vcr, :company_id, Company.all, :id, :name, prompt: true) %>
   </div>
 
   <div class="field">

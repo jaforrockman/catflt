@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Coll Vcrs</h1>
-
-<table>
+<h1 align="center"><u>Coll Vcrs</u></h1>
+<hr style="color: green">
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Company</th>
+      <th>Ext Rv</th>
       <th>Coll date</th>
+      <th>Company</th>
+      
       <th>Invoice num</th>
-      <th>References</th>
+      <% Item.all.each do |i|%>
+        <th><%= i.name %></th>
+      <% end %>
+      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,14 +21,32 @@
   <tbody>
     <% @coll_vcrs.each do |coll_vcr| %>
       <tr>
-        <td><%= coll_vcr.company_id %></td>
+        <td><%= coll_vcr.ext_rv %></td>
         <td><%= coll_vcr.coll_date %></td>
+        <td style="text-align: left" ="left"><%= Company.find(coll_vcr.company_id).name %></td>
+        
         <td><%= coll_vcr.invoice_num %></td>
+        <% coll_vcr.collections.each do |i|%>     
+            <td><%= i.qty %></td> 
+        <% end %>
         <td><%= link_to 'Show', coll_vcr %></td>
         <td><%= link_to 'Edit', edit_coll_vcr_path(coll_vcr) %></td>
         <td><%= link_to 'Destroy', coll_vcr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
+
     <% end %>
+     <tr style="background-color: #DDE1CC">
+        <td colspan="4">Total</td>
+
+        <% @items.each do |i|%>
+          <% total = Item.find(i.id).collections.sum(&:qty)%>
+          <td ><%= total %></td>
+        <% end %>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
   </tbody>
 </table>
 

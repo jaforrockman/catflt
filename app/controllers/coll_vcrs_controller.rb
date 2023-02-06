@@ -4,6 +4,8 @@ class CollVcrsController < ApplicationController
   # GET /coll_vcrs or /coll_vcrs.json
   def index
     @coll_vcrs = CollVcr.all
+    @items = Item.all
+
   end
 
   # GET /coll_vcrs/1 or /coll_vcrs/1.json
@@ -71,6 +73,6 @@ class CollVcrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def coll_vcr_params
-      params.require(:coll_vcr).permit(:company_id, :coll_date, :invoice_num, :references, collections_attributes: [:item_id, :qty, :coll_vcr_id])
+      params.require(:coll_vcr).permit(:company_id, :coll_date, :invoice_num, :ext_rv, collections_attributes: [:item_id, :qty, :coll_vcr_id])
     end
 end
