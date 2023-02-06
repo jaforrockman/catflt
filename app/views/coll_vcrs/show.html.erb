@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+<<<<<<< HEAD
   <strong>Ext Rv:</strong>
   <%= @coll_vcr.ext_rv %>
 </p>
 
+=======
+  <strong>Catering:</strong>
+  <%= Catering.find(@coll_vcr.catering_id).name %>
+</p>
+>>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
 <p>
   <strong>Company:</strong>
-  <%= @coll_vcr.company_id %>
+  <%= Company.find(@coll_vcr.company_id).name %>
 </p>
 
 <p>
@@ -18,6 +24,10 @@
 <p>
   <strong>Invoice num:</strong>
   <%= @coll_vcr.invoice_num %>
+</p>
+<p>
+  <strong>Ext RV:</strong>
+  <%= @coll_vcr.ext_rv %>
 </p>
 
 <table>

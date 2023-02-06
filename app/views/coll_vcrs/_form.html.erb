@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div>
+    <%= collection_select(:coll_vcr, :catering_id, Catering.all, :id, :name, prompt: true) %>
+  </div>
+
   <div class="field">
       <%= form.label :ext_rv %>
               <% if CollVcr.any? %>
@@ -27,7 +31,11 @@
 
   <div class="field">
     <%= form.label :company_id %>
+<<<<<<< HEAD
     <%= collection_select(:coll_vcr, :company_id, Company.all, :id, :name, prompt: true) %>
+=======
+     <%= collection_select(:coll_vcr, :company_id, Company.all, :id, :name, prompt: true) %>
+>>>>>>> ff9fa4288ea21eff91f5e459b353f2e4b07899e0
   </div>
 
   <div class="field">
@@ -39,24 +47,52 @@
     <%= form.label :invoice_num %>
     <%= form.number_field :invoice_num, id: :coll_vcr_invoice_num %>
   </div>
+   <div class="field">
+    <% if CollVcr.any? %>
+                  <h6> Your Last Ext Rv was: <%= CollVcr.last.ext_rv%></h6>
+                     <% ext_rv = CollVcr.last.ext_rv+=1 %>
+                     <!--<h6> Current new iv: <%= ext_rv %></h6>!-->
+                    <% else %>
+                      <% ext_rv = 1 %>
+                      <h6>Create Fist Collection Voucher and Ext Rv Will be: 01</h6>
+              <% end %>
+    
+          <%= form.number_field :ext_rv, value:ext_rv, id: :voucher_ext_rv %></td>
+  </div>
 <br>
 <br>
-
-  <% @items.each do |i|%>
-
-  <%=form.fields_for :collections do |f|%>
-            <div>
-             <%= i.name%> 
-             <%= f.hidden_field :item_id, value:i.id, id: :issue_item_id %>
-             <%= f.number_field :qty, id: :issue_qty, :value => 0.00 %>
-            </div>
-     
-    <% end %>
-<% end %>
-
 
  
+
+<table>
+
+ <% Item.all.each do |i|%>
+    <%=form.fields_for :collections do |f|%>
+           <tr>
+             
+
+            
+             <td> <%= i.name%> 
+              <%= f.hidden_field :item_id, value:i.id, id: :issue_item_id %>
+              </td>
+              
+
+           <td>
+              
+              <%= f.number_field :qty, id: :issue_qty, :value => 0.00 %>
+           </td>
+           <td></td>
+     
+    <% end %>
+  <% end %>
+           </tr>
+
+ </table>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+
