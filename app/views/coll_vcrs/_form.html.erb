@@ -10,53 +10,88 @@
       </ul>
     </div>
   <% end %>
+<table align="center">
+  <tr>
+      <td>
+        <h3>From</h3>
+          <div class="field">
+          <%= form.label :company_id %>
+          <%= collection_select(:coll_vcr, :company_id, Company.all, :id, :name, prompt: true) %>
+        </div>
 
-  <div class="field">
-      <%= form.label :ext_rv %>
-              <% if CollVcr.any? %>
-                  <h6> Your Last Ext Rv number was: <%= CollVcr.last.ext_rv%></h6>
-                     <% ext_rv = CollVcr.last.ext_rv+=1 %>
-                     <!--<h6> Current new iv: <%= ext_rv %></h6>-->
-                    <% else %>
-                      <% ext_rv = 1 %>
-                      <h6>Create Fist CollVcr and Iv Will be: 01</h6>
-              <% end %>
-    
-          <%= form.number_field :ext_rv, value:ext_rv, id: :coll_vcr_ext_rv %>
-  </div>
+        </td>
+        
+        <td>
+        <h3>TO</h3>
+        <%= Catering.last.name%>
+      
+        </td>
 
-  <div class="field">
-    <%= form.label :company_id %>
-    <%= collection_select(:coll_vcr, :company_id, Company.all, :id, :name, prompt: true) %>
-  </div>
+        <td>
+          <div class="field">
+            <h3><%= form.label :ext_rv %></h3>
+                    <% if CollVcr.any? %>
+                        <h6> Your Last Ext Rv number was: <%= CollVcr.last.ext_rv%></h6>
+                           <% ext_rv = CollVcr.last.ext_rv+=1 %>
+                           <!--<h6> Current new iv: <%= ext_rv %></h6>-->
+                          <% else %>
+                            <% ext_rv = 1 %>
+                            <h6>Create Fist CollVcr and Iv Will be: 01</h6>
+                    <% end %>
+          
+                <%= form.number_field :ext_rv, value:ext_rv, id: :coll_vcr_ext_rv %>
+        </div>
+      </td>
+  </tr>
 
-  <div class="field">
-    <%= form.label :coll_date %>
-    <%= form.date_select :coll_date, id: :coll_vcr_coll_date %>
-  </div>
+  <tr>
 
-  <div class="field">
-    <%= form.label :invoice_num %>
-    <%= form.number_field :invoice_num, id: :coll_vcr_invoice_num %>
-  </div>
+    <td>
+      <h3>Date</h3>
+      <div class="field">
+      <%= form.label :coll_date %>
+      <%= form.date_select :coll_date, id: :coll_vcr_coll_date %>
+      </div>
+    </td>
+
+    <td>
+       <div class="field">
+      <h3>
+      <%= form.label :company_invoice_num %></h3>
+      <%= form.number_field :invoice_num, id: :coll_vcr_invoice_num %>
+    </div>
+    </td>
+
+  </tr>
+
+  
+
+ 
 <br>
 <br>
 
   <% @items.each do |i|%>
-
+  <tr>
+  <td><%=i.inum%></td>
   <%=form.fields_for :collections do |f|%>
-            <div>
+          <td>
+            
              <%= i.name%> 
+             </td>
+             <td>
+
              <%= f.hidden_field :item_id, value:i.id, id: :issue_item_id %>
              <%= f.number_field :qty, id: :issue_qty, :value => 0.00 %>
-            </div>
+            </td>
      
     <% end %>
+    </tr>
 <% end %>
 
-
+</table>
+<br>
  
-  <div class="actions">
-    <%= form.submit %>
+  <div align="center">
+    <button class="btn btn-primary"><%= form.submit %></button>
   </div>
 <% end %>
