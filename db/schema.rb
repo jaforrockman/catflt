@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230206143655) do
+ActiveRecord::Schema.define(version: 20230217112639) do
 
   create_table "caterings", force: :cascade do |t|
     t.string "name"
@@ -93,6 +93,12 @@ ActiveRecord::Schema.define(version: 20230206143655) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "voucher_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "vouchers", force: :cascade do |t|
     t.string "name"
     t.integer "mess_id"
@@ -100,6 +106,7 @@ ActiveRecord::Schema.define(version: 20230206143655) do
     t.datetime "updated_at", null: false
     t.integer "catering_id"
     t.integer "iv_numb"
+    t.integer "voucher_type_id"
   end
 
 end

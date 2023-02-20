@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Voucher Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @voucher_types.each do |voucher_type| %>
+      <tr>
+        <td><%= voucher_type.name %></td>
+        <td><%= link_to 'Show', voucher_type %></td>
+        <td><%= link_to 'Edit', edit_voucher_type_path(voucher_type) %></td>
+        <td><%= link_to 'Destroy', voucher_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Voucher Type', new_voucher_type_path %>

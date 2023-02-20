@@ -15,11 +15,13 @@
 
   <% if Item.any? %>
      <h4>Last Item Number: <%= Item.last.inum%></h4>
-  <% else %>
-  Create your first Item<br/>
+     <% item_num = Item.last.inum+=1%>
+      <% else %>
+      Create your first Item<br/>
+      <% item_num = 1%>
   <% end %>
     <%= form.label :inum %>
-    <%= form.number_field :inum, id: :item_inum %>
+    <%= form.number_field :inum, id: :item_inum, value: item_num %>
   </div>
 <br/>
   <div class="field">

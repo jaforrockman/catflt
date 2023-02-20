@@ -32,6 +32,7 @@
               <%= collection_select(:voucher, :catering_id, Catering.all, :id, :name, prompt: true) %>
            </td>
            <td> 
+              <%#= collection_select(:voucher, :vouhcer_type_id, VoucherType.all, :id, :name, prompt: true) %><br>
               <%= collection_select(:voucher, :mess_id, Mess.all, :id, :name, prompt: true) %>
           </td>
            <td>
@@ -47,7 +48,7 @@
                     <% else %>
                       <% iv_number = 1 %>
                       <h6>Create Fist Voucher and Iv Will be: 01</h6>
-              <% end %>
+                <% end %>
     
           <%= form.number_field :iv_numb, value:iv_number, id: :voucher_iv_numb %>
           </td>
